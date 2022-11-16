@@ -1,4 +1,7 @@
-import { application, Application, NextFunction, Request, Response } from "express";
+import { Application, NextFunction, Request, Response } from "express";
+
+const userRoutes = require('./routes/userRoutes')
+const globalErrorHandler = require('./controller/errorController')
 
 const express = require('express')
 const cookieParser = require('cookie-parser')
@@ -12,21 +15,12 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
 
 
+app.use('/user', userRoutes);
+
 app.all('*', (req : Request, res : Response, next : NextFunction) => {
     return res.status(404).json({message:'not found !'})
   });
-  
-  module.exports = app;
 
-  /* //Routes
-  app.use('/', viewRouter);
-  app.use('/api/v1/tours', tourRouter);
-  app.use('/api/v1/users', userRouter);
-  app.use('/api/v1/reviews', reviewRouter);
-  app.use('/api/v1/bookings', bookingRouter);
-  
-  app.all('*', (req, res, next) => {
-    next(new AppError(`Can't find ${req.originalUrl} on this server !`, 404));
-  });
-  
-  app.use(globalErrorHandler); */
+app.use(globalErrorHandler);
+    
+module.exports = app;
