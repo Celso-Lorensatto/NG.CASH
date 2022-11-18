@@ -21,4 +21,9 @@ export class PrismaAccountRepository implements AccountRepository{
 
         return account as Account;
     };
+
+    async updateOne(id:string, newAccount:Account){
+      const teste = await prisma.accounts.update({data:newAccount, where:{id}});
+      console.log(teste);
+    }
 }

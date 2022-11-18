@@ -2,22 +2,17 @@ import {Router} from 'express'
 
 const express = require('express')
 const authController = require('../controller/authController')
+const userController = require('../controller/userController')
 
 const router : Router = express.Router();
 
 router.post('/newAccount', authController.newAccount)
 
-router.post('/logIn', (req,res) => {
-    return res.json({message:'ok'})
-})
+router.post('/login', authController.login)
 
-router.get('/logOut', (req,res) => {
-    return res.json({message:'ok'})
-})
+router.get('/logout', authController.logout)
 
-router.get('/accountData', (req,res) => {
-    return res.json({message:'ok'})
-})
+router.get('/:username', userController.getUser)
 
 
 module.exports = router;

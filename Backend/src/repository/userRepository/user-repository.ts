@@ -19,5 +19,5 @@ export interface UserRepository{
         id?:string
         username:string
         password?:boolean
-      }) => Promise<User>
+      }) => Promise<User|null>
 }

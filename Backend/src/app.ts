@@ -1,6 +1,9 @@
 import { Application, NextFunction, Request, Response } from "express";
 
 const userRoutes = require('./routes/userRoutes')
+const accountRoutes = require('./routes/accountRoutes')
+const transactionRoutes = require('./routes/transactionRoutes');
+
 const globalErrorHandler = require('./controller/errorController')
 
 const express = require('express')
@@ -16,6 +19,8 @@ app.use(cookieParser());
 
 
 app.use('/user', userRoutes);
+app.use('/account', accountRoutes);
+app.use('/transaction', transactionRoutes);
 
 app.all('*', (req : Request, res : Response, next : NextFunction) => {
     return res.status(404).json({message:'not found !'})

@@ -7,5 +7,6 @@ export interface Account{
 
 export interface AccountRepository{
     create:() => Promise<Account>;
-    findOne:(id:string) => Promise<Account>
+    findOne:(id:string) => Promise<Account>;
+    updateOne:(id:string, newAccount:Account) => Promise<any>;
 }

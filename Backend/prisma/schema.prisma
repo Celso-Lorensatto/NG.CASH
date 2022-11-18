@@ -30,8 +30,8 @@ model Transactions{
   id String @id @default(uuid())
   value Decimal @db.Decimal(15,2)
   createdAt DateTime @default(now())
-  debitedAccountId String @unique
+  debitedAccountId String 
   debitedAccount Accounts @relation("debitedAccount",fields: [debitedAccountId], references: [id])
-  creditedAccountId String @unique
+  creditedAccountId String 
   creditedAccount Accounts @relation("creditedAccount",fields: [creditedAccountId], references: [id])  
 }

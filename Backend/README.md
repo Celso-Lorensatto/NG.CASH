@@ -13,12 +13,12 @@ lista de Tarefas:
     - [x] username único e composto por no mínimo 3 caracteres.
     - [x] password deve conter : Mínimo 8 caracteres, um número e uma letra maiúscula.
     - [x] Senha deve ser criptografada enquanto estiver no banco
-  - [x] Após o cadastro será populado na tabela Accounts sendo esse lançamento contendo um saldo de R$ 100 iniciais na conta.
-  - [ ] Sistema de controle de sessão de usuário por JWT.
-  - [ ] Usuário logado sera capaz de somenter ter acesso aos dados de sua conta.
-  - [ ] Usuário logado será capaz de fazer transferências para outras contas.
-    - [ ] Não poderá fazer tranferências para si.
-    - [ ] Não poderá fazer transferencias que excedem o valor do seu saldo atual.
-    - [ ] Todas as Tranferências bem-sucedidas serão inseridas na tabela Transactions.
-    - [ ] Usuário será capaz de ter acesso a todos os recebimentos e transferências relacionados a sua conta.
-    - [ ] Usuário poderá filtrar suas transações por : Data de realização E/OU Cash-in, cash-out.
+  - [x] Após o cadastro ser populado na tabela Accounts sendo esse lançamento contendo um saldo de R$ 100 iniciais na conta.
+  - [x] Sistema de controle de sessão de usuário por JWT.
+  - [x] Usuário logado será capaz de somenter ter acesso aos dados de sua conta.
+  - [x] Usuário logado será capaz de fazer transferências para outras contas.
+    - [x] Não poderá fazer tranferências para si.
+    - [x] Não poderá fazer transferencias que excedem o valor do seu saldo atual.
+    - [x] Todas as Tranferências bem-sucedidas serão inseridas na tabela Transactions.
+    - [x] Usuário será capaz de ter acesso a todos os recebimentos e transferências relacionados a sua conta.
+    - [x] Usuário poderá filtrar suas transações por : Data de realização E/OU Cash-in, cash-out.

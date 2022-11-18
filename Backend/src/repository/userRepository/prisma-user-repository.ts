@@ -1,5 +1,9 @@
+import { Decimal } from "@prisma/client/runtime";
 import { prisma } from "../../prisma";
+import { PrismaAccountRepository } from "../accountRepositoy/prisma-account-repository";
 import {UserRepository, UserCreateData, User as UserObj} from './user-repository'
+
+const accountDb = new PrismaAccountRepository();
 
 function exclude<UserObj, Key extends keyof UserObj>(
   user: UserObj,
@@ -11,6 +15,7 @@ function exclude<UserObj, Key extends keyof UserObj>(
   return user
 }
 
+
 type User = {
  id:string
  username:string;
@@ -19,8 +24,10 @@ type User = {
 }
 
 type FindUserOptions = {
-  username:string
-  password?:boolean
+  id?:string;
+  username?:string
+  excludePassword?:boolean
+  excludeAccount?:boolean
 }
 
 export class PrismaUserRepository implements UserRepository{
@@ -35,12 +42,22 @@ export class PrismaUserRepository implements UserRepository{
         })
     }
 
-    async findOne({username, password}:FindUserOptions) {
+    async findOne({id, username, excludePassword = true, excludeAccount = true}:FindUserOptions) {
       let user;  
-      user = await prisma.users.findUnique({where:{username}})
-        if(!password){
+      user = await prisma.users.findUnique({where:{username, id}, include:{account:!excludeAccount}}) as User
+
+      if(!user){
+        return null
+      }
+        
+        if(excludePassword){
           user = exclude(user,['password'])
         }
+        
+        if(excludeAccount){
+          user = exclude(user, ['accountId'])
+        } 
+
         return user as User;
     };
 }
