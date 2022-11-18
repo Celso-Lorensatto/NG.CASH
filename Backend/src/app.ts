@@ -24,7 +24,7 @@ app.use('/transaction', transactionRoutes);
 
 app.all('*', (req : Request, res : Response, next : NextFunction) => {
     return res.status(404).json({message:'not found !'})
-  });
+});
 
 app.use(globalErrorHandler);
     

@@ -28,7 +28,7 @@ type User = {
 }
 
 
-const userValidation = async (userObj :UserRequestData) =>{
+const userValidation = (userObj :UserRequestData) =>{
     const userSchema = yup.object({
         username: yup.string().min(4).matches(/^(@)/, "Sem o @ no início").required("inclusão do usuário é obrigatória"),
         password:yup.string().min(8, "A senha deve ter no mínimo 8 caracteres").matches(/^(?=.*[0-9])(?=.*[A-Z])([A-Z0-9]+)$/, "A Senha deve contar no mínimo uma letra maiúscula e um número").required('A Senha é obrigatório')
@@ -116,16 +116,25 @@ exports.protect = catchAsync(async (req:Request,res:Response,next:NextFunction) 
         )
     }
 
-    const decoded: jwtKeyType = await promisify(jwt.verify)(token, 
-        //@ts-ignore
-        process.env.JWT_SECRET);
+    try{
+        const decoded: jwtKeyType = await promisify(jwt.verify)(token, 
+            //@ts-ignore
+            process.env.JWT_SECRET);
+        const currentUser = await userDb.findOne({id:decoded.id})
+        res.locals.user = currentUser;
 
-    const currentUser = await userDb.findOne({id:decoded.id})
-    res.locals.user = currentUser;
+    }catch (err : any) {
+        if (err.message === 'jwt expired'){
+            return next(
+                new AppError('Sua Sessão expirou, por favor logue novamente !',403 )
+            )
+        }
+    }
+
     next();
 })
 
-exports.login = async (req:Request, res:Response, next:NextFunction) => {
+exports.login = catchAsync(async (req:Request, res:Response, next:NextFunction) => {
     const {username, password} = req.body;
     
     if(!username || !password){
@@ -147,7 +156,7 @@ exports.login = async (req:Request, res:Response, next:NextFunction) => {
     delete user.password;
 
     createSendToken(user, 200, res)
-}
+})
 
 exports.logout = (req : Request, res: Response) => {
     res.cookie('jwt', 'loggedout', {

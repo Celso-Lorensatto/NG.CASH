@@ -36,18 +36,16 @@ export class ManyTransactionsFilter {
 
         this.chainQueryTest()
 
-        if(type){
-
-            if(type === 'cash-in'){
+        switch (type) {
+            case 'cash-in':
                 this.queryString += `"creditedAccountId"  = '${this.accountId}'`
-            }
-
-            if(type === 'cash-out'){
+                break;
+            case 'cash-out':
                 this.queryString += `"debitedAccountId"  = '${this.accountId}'`
-            }
-
-        } else {
-            this.queryString += `"debitedAccountId" = '${this.accountId}' OR "creditedAccountId"  = '${this.accountId}' `
+                break;
+            default:
+                this.queryString += `"debitedAccountId" = '${this.accountId}' OR "creditedAccountId"  = '${this.accountId}' `
+                break;
         }
 
         return this;
@@ -55,11 +53,17 @@ export class ManyTransactionsFilter {
 
     public filterDate(date:string){
         if(date){
+
+            if(date.match(/^\d{4}(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1])$/)){
             this.chainQueryTest()
             const convertedDate = new Date(date);
             const rangeDate = new Date(convertedDate.setDate(convertedDate.getDate()+1)) 
             convertedDate.setDate(convertedDate.getDate()-1)
             this.queryString += `"createdAt"  BETWEEN '${convertedDate.toISOString()}' AND '${rangeDate.toISOString()}' `
+            } else {
+                this.queryString += ` ORDER BY "createdAt" DESC `
+            }
+            
         } else {
             this.queryString += ` ORDER BY "createdAt" DESC `
         }
@@ -71,8 +75,8 @@ export class ManyTransactionsFilter {
 
     public async filterPagination(page:number){
         const [total] = await this.transactionDb.customQuery(this.queryString.replace('*',`COUNT(*) as total`).replace('ORDER BY "createdAt" DESC', " ")) as queryResultRows
-        this.totalPages = parseInt(total.total) / this.pagination > Math.round(parseInt(total.total) / this.pagination) 
-        ? Math.round(parseInt(total.total) / this.pagination) + 1 :  parseInt(total.total) / this.pagination
+        this.totalPages = parseInt(total.total) / this.pagination > Math.trunc(parseInt(total.total) / this.pagination) 
+        ? Math.trunc(parseInt(total.total) / this.pagination) + 1 :  parseInt(total.total) / this.pagination
         if(page){
             const indexRowStart = page * this.pagination+(page -1) - this.pagination
             this.page = page;
