@@ -8,7 +8,7 @@ lista de Tarefas:
   - [x] Configurar o Banco de dados Postgresql.
   - [x] Instalar dependências para rodar o projeto (Typescript, Prisma, NodeJs).
   - [x] Configurar o Prisma para mapeamento e ajuste de constraints de Entidades do banco de dados.
-- [ ] Comprimento das regras de negócio
+- [x] Comprimento das regras de negócio
   - [x] Cadastro de usuário por username e password
     - [x] username único e composto por no mínimo 3 caracteres.
     - [x] password deve conter : Mínimo 8 caracteres, um número e uma letra maiúscula.
