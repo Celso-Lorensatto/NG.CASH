@@ -1,0 +1,154 @@
+:root {
+  --brand-color: #ebdf00;
+  --accent-color: #00ffa3;
+  --success-color: #82c91e;
+  --error-color: #f03e3e;
+  --gray-color: #1e1e26;
+  --gray-white-color: #334056;
+  --gray-dark-color: #141417;
+  --animation-pattern: cubic-bezier(0.04, 1.08, 0.89, 0.93); }
+
+@keyframes introductionContainer {
+  0% {
+    opacity: 100%; }
+  100% {
+    opacity: 0%;
+    visibility: hidden; } }
+
+@keyframes introductionOpacityContent {
+  0% {
+    opacity: 0%; }
+  100% {
+    opacity: 100%; } }
+
+@keyframes introductionPrograssionBar {
+  0% {
+    flex: 0 0 100%; }
+  100% {
+    flex: 0 0 0%; } }
+
+@keyframes introductionFontEntrace {
+  0% {
+    transform: translate(-10px, 0px); }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 100%; } }
+
+@keyframes introductionScrollBarEntrace {
+  0% {
+    overflow: hidden; }
+  100% {
+    overflow: overlay; } }
+
+@keyframes headerStikyRollDown {
+  100% {
+    top: 0; } }
+
+@keyframes stickyFadeOut {
+  0% {
+    opacity: 100%; }
+  100% {
+    opacity: 0%; } }
+
+@keyframes stickyFadeIn {
+  0% {
+    opacity: 0%; }
+  100% {
+    opacity: 100%; } }
+
+@keyframes elementEntrace {
+  0% {
+    transform: translate(0px, -10px);
+    opacity: 0%; }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 100%; } }
+
+@keyframes sectionOnViewEntrace {
+  0% {
+    opacity: 0%;
+    transform: translate(0rem, -2rem); }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 100%; } }
+
+@keyframes arrowUpEntraceAnimation {
+  0% {
+    opacity: 0%;
+    visibility: hidden;
+    scale: 0; }
+  100% {
+    opacity: 100%;
+    visibility: initial;
+    scale: 1; } }
+
+@keyframes arrowUpOutAnimation {
+  0% {
+    opacity: 100%;
+    visibility: initial;
+    scale: 1; }
+  100% {
+    opacity: 0%;
+    visibility: hidden;
+    scale: 0; } }
+
+@keyframes modalEntrace {
+  0% {
+    opacity: 0%;
+    transform: scale(0); }
+  100% {
+    opacity: 100%;
+    transform: scale(1); } }
+
+@keyframes modalOut {
+  0% {
+    opacity: 100%;
+    scale: 1; }
+  100% {
+    opacity: 0%;
+    scale: 0; } }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent; }
+
+html {
+  font-size: 62.5%; }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) and (max-height: 75em) {
+    html {
+      font-size: 50%; } }
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #111115; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border: 1.7px solid #111115;
+  border-radius: 30px; }
+
+::selection {
+  background-color: var(--accent-color);
+  color: #111115; }
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #111115; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border: 1.7px solid #111115;
+  border-radius: 30px; }
+
+::selection {
+  background-color: var(--accent-color);
+  color: #111115; }

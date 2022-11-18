@@ -1,0 +1,55 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  //This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+
+  @include respond(AE) {
+    font-size: 56.25%;
+  }
+
+  @include respond(AG) {
+    font-size: 50%;
+  }
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #111115;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border: 1.7px solid #111115;
+  border-radius: 30px;
+}
+
+::selection {
+  background-color: var(--accent-color);
+  color: #111115;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #111115;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border: 1.7px solid #111115;
+  border-radius: 30px;
+}
+
+::selection {
+  background-color: var(--accent-color);
+  color: #111115;
+}

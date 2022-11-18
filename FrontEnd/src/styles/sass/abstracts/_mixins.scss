@@ -1,0 +1,124 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == AR {
+    @media only screen and (max-width: 22em) {
+      @content;
+    } //?
+  }
+
+  @if $breakpoint == AQ {
+    @media only screen and (max-width: 23.75em) {
+      @content;
+    } //380px
+  }
+
+  @if $breakpoint == AP {
+    @media only screen and (max-width: 26em) {
+      @content;
+    } //415px
+  }
+
+  @if $breakpoint == AO {
+    @media only screen and (max-width: 29em) {
+      @content;
+    } //474px
+  }
+
+  @if $breakpoint == AN {
+    @media only screen and (max-width: 30em) {
+      @content;
+    } //474px
+  }
+  @if $breakpoint == AM {
+    @media only screen and (max-width: 34em) {
+      @content;
+    } //500px
+  }
+
+  @if $breakpoint == AL {
+    @media only screen and (max-width: 34em) {
+      @content;
+    } //544px
+  }
+
+  @if $breakpoint == AK {
+    @media only screen and (max-width: 40em) {
+      @content;
+    } //640px
+  }
+  @if $breakpoint == AJ {
+    @media only screen and (max-width: 45em) {
+      @content;
+    } //720px
+  }
+
+  @if $breakpoint == AI {
+    @media only screen and (max-width: 47em) {
+      @content;
+    } //720px
+  }
+
+  @if $breakpoint == AH {
+    @media only screen and (max-width: 52em) and (max-height: 75em) {
+      @content;
+    } //820px
+  }
+  @if $breakpoint == AG {
+    @media only screen and (max-width: 56.25em) and (max-height: 75em) {
+      @content;
+    } //900px
+  }
+
+  @if $breakpoint == AF {
+    @media only screen and (max-width: 69em) {
+      @content;
+    } //1100px
+  }
+
+  @if $breakpoint == AE {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } //1200px
+  }
+
+  @if $breakpoint == AD {
+    @media only screen and (max-width: 79em) {
+      @content;
+    } //1250px
+  }
+
+  @if $breakpoint == AC {
+    @media only screen and (max-width: 85em) {
+      @content;
+    } //1350px
+  }
+
+  @if $breakpoint == AB {
+    @media only screen and (max-width: 100em) {
+      @content;
+    } //1600px
+  }
+
+  @if $breakpoint == AA {
+    @media only screen and (max-width: 112.5em) {
+      @content;
+    } //1800
+  }
+
+  @if $breakpoint == BC {
+    @media only screen and (max-height: 33.75em) and (min-width:30em) {
+      @content;
+    } //540px
+  }
+
+  @if $breakpoint == BB {
+    @media only screen and (max-height: 36em) {
+      @content;
+    } //720px
+  }
+
+  @if $breakpoint == BA {
+    @media only screen and (min-height: 62.5em) and (max-width: 64em) {
+      @content;
+    } //1000px
+  }
+}
