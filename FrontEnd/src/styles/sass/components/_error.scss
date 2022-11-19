@@ -1,23 +1,28 @@
-.notFound{
-    width: 100vw;
-    height: 100vh;
+.errorContainer{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: white;
     display: flex;
+    gap: 7rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    
     img{
-        width: 50rem;
-        margin-bottom: 10rem;
+        width: 40rem;
     }
 
     h1{
         font-size: 3rem;
-        margin-bottom: 3rem;
     }
 
     a{
-        font-size: 1.8rem;
+        font-size: 2rem;
         text-decoration: underline;
     }
+
 }

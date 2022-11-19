@@ -1,0 +1,26 @@
+.welcomeSection{     
+    display: flex;   
+    gap: 20rem;
+    align-items: center;
+
+    .introduction{
+        color: var(--black-color);
+
+        h1{
+            font-weight: 600;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -.2px;
+        }
+
+        p{
+            font-weight: 400;
+            font-size: 1.5rem;
+            color: var(--gray-color-heavy);
+        }
+    }
+
+    .introIlustration{
+        width: 45rem;
+    }
+}

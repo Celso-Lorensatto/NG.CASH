@@ -1,12 +1,66 @@
 :root {
   --brand-color: #ebdf00;
-  --accent-color: #00ffa3;
-  --success-color: #82c91e;
-  --error-color: #f03e3e;
-  --gray-color: #1e1e26;
-  --gray-white-color: #334056;
-  --gray-dark-color: #141417;
-  --animation-pattern: cubic-bezier(0.04, 1.08, 0.89, 0.93); }
+  --white-color: #fff;
+  --black-color: #000;
+  --accent-color-primary: #7431F4;
+  --accent-color-secondary:#FF00FF;
+  --red-color:#F6645B;
+  --green-color:#66A80F;
+  --gray-color-heavy:#797878;
+  --gray-color-light:#C5C5C5; }
+
+button {
+  width: 100%;
+  border: none;
+  background-color: var(--white-color);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--black-color);
+  cursor: pointer;
+  border: solid 1.7px black;
+  border-radius: 11px;
+  padding: 1rem 0;
+  box-shadow: 4px 4px var(--accent-color-primary);
+  transition: all 0.2s; }
+  button:disabled {
+    cursor: default;
+    color: var(--gray-color-light);
+    border-color: var(--gray-color-light);
+    box-shadow: 0 0 var(--accent-color-primary); }
+    button:disabled:active {
+      transform: translate(0, 0); }
+  button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 var(--accent-color-primary); }
+
+.errorContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: white;
+  display: flex;
+  gap: 7rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .errorContainer img {
+    width: 40rem; }
+  .errorContainer h1 {
+    font-size: 3rem; }
+  .errorContainer a {
+    font-size: 2rem;
+    text-decoration: underline; }
+
+.inputErrorElement {
+  font-weight: 400 !important;
+  position: absolute;
+  color: var(--red-color);
+  top: 110%;
+  font-size: 1.3rem !important; }
 
 @keyframes introductionContainer {
   0% {
@@ -117,6 +171,7 @@
   -webkit-tap-highlight-color: transparent; }
 
 html {
+  height: 100%;
   font-size: 62.5%; }
   @media only screen and (max-width: 75em) {
     html {
@@ -125,30 +180,482 @@ html {
     html {
       font-size: 50%; } }
 
-::-webkit-scrollbar {
-  width: 8px;
-  background-color: #111115; }
+a {
+  text-decoration: none;
+  color: inherit; }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background-color: var(--accent-color);
-  border: 1.7px solid #111115;
-  border-radius: 30px; }
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .container header {
+    width: 100%; }
+  .container .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%; }
+  .container input {
+    padding-left: .2rem;
+    padding-bottom: .3rem; }
 
-::selection {
-  background-color: var(--accent-color);
-  color: #111115; }
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500; }
 
-::-webkit-scrollbar {
-  width: 8px;
-  background-color: #111115; }
+header {
+  background-color: var(--black-color);
+  display: flex;
+  justify-content: space-between; }
+  header .logo {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    padding: 1rem;
+    display: flex; }
+    header .logo .logoImg {
+      width: 7rem; }
+  header .logSection {
+    margin-top: 2rem;
+    margin-right: 3rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center; }
+    header .logSection nav ul {
+      display: flex;
+      gap: 5rem; }
+      header .logSection nav ul li.selected a {
+        color: var(--gray-color-light);
+        text-decoration: underline;
+        text-underline-offset: 1px; }
+      header .logSection nav ul li a {
+        color: var(--white-color);
+        text-transform: uppercase;
+        font-size: 1.8rem;
+        font-weight: 700; }
+        header .logSection nav ul li a:hover {
+          color: var(--gray-color-light); }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background-color: var(--accent-color);
-  border: 1.7px solid #111115;
-  border-radius: 30px; }
+header .balanceSection {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 3rem;
+  display: flex; }
+  header .balanceSection .balance {
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    width: 30rem;
+    margin-left: 2rem;
+    overflow: hidden;
+    border-radius: 7px;
+    align-items: center; }
+    header .balanceSection .balance h3 {
+      flex: 1;
+      font-size: 3rem;
+      text-align: center;
+      font-weight: 500; }
+      header .balanceSection .balance h3 img {
+        margin-left: 2rem;
+        width: 2rem; }
+    header .balanceSection .balance .updateBalance {
+      padding: 1rem;
+      align-self: stretch;
+      background-color: var(--gray-color-light);
+      display: flex;
+      align-items: center; }
+      header .balanceSection .balance .updateBalance img {
+        width: 3rem; }
+  header .balanceSection .toggleVisibilityButton {
+    margin-left: 2.5rem;
+    border-radius: 10px;
+    background-color: white;
+    padding: 1.5rem; }
+    header .balanceSection .toggleVisibilityButton img {
+      cursor: pointer;
+      max-height: 2rem;
+      width: 4rem; }
 
-::selection {
-  background-color: var(--accent-color);
-  color: #111115; }
+header .logSection nav ul li a {
+  font-size: 2.5rem !important;
+  margin-right: 2rem !important; }
+
+.contentContainer {
+  display: flex; }
+  .contentContainer .activitySection {
+    display: flex;
+    flex-direction: column;
+    min-height: 50rem;
+    min-width: 40rem; }
+    .contentContainer .activitySection h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem; }
+    .contentContainer .activitySection .filterSection {
+      display: flex;
+      flex-wrap: nowrap; }
+      .contentContainer .activitySection .filterSection .filters {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-bottom: 2rem; }
+        .contentContainer .activitySection .filterSection .filters input {
+          width: 13rem;
+          border: none;
+          border-bottom: solid 2px black; }
+          .contentContainer .activitySection .filterSection .filters input::placeholder {
+            font-weight: 400;
+            font-size: 1.2rem; }
+          .contentContainer .activitySection .filterSection .filters input:focus {
+            outline: none; }
+      .contentContainer .activitySection .filterSection .dropDownContainer {
+        position: relative;
+        width: 7rem;
+        margin-left: 1.2rem; }
+        .contentContainer .activitySection .filterSection .dropDownContainer:hover .dropDownHeader img {
+          transform: translate(0, -3px); }
+        .contentContainer .activitySection .filterSection .dropDownContainer .dropDownHeader {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-left: .2rem;
+          padding-bottom: .3rem;
+          font-weight: 500;
+          font-size: 1.2rem;
+          font-weight: 400;
+          color: var(--gray-color-heavy);
+          background: #ffffff;
+          border-bottom: solid 2px black; }
+          .contentContainer .activitySection .filterSection .dropDownContainer .dropDownHeader img {
+            transition: all .2s;
+            width: 1.5rem; }
+        .contentContainer .activitySection .filterSection .dropDownContainer .dropDownListContainer {
+          position: absolute;
+          left: 0;
+          right: 0; }
+          .contentContainer .activitySection .filterSection .dropDownContainer .dropDownListContainer .dropDownList {
+            background: #ffffff;
+            box-sizing: border-box;
+            font-size: 1.3rem;
+            font-weight: 500; }
+            .contentContainer .activitySection .filterSection .dropDownContainer .dropDownListContainer .dropDownList:first-child {
+              padding-top: 0.8em; }
+            .contentContainer .activitySection .filterSection .dropDownContainer .dropDownListContainer .dropDownList .listItem {
+              list-style: none;
+              margin-bottom: 0.8em;
+              border-bottom: solid 1px black; }
+      .contentContainer .activitySection .filterSection img {
+        margin-left: auto;
+        margin-bottom: auto;
+        width: 2rem; }
+    .contentContainer .activitySection .tableContainer {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .contentContainer .activitySection .tableContainer .noTransference {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; }
+        .contentContainer .activitySection .tableContainer .noTransference img {
+          width: 20rem; }
+        .contentContainer .activitySection .tableContainer .noTransference h1 {
+          margin-top: 3rem;
+          font-weight: 400;
+          font-size: 1.5rem;
+          font-family: 'IBM Plex Mono', monospace; }
+      .contentContainer .activitySection .tableContainer table {
+        border-collapse: collapse;
+        width: 100%; }
+        .contentContainer .activitySection .tableContainer table th, .contentContainer .activitySection .tableContainer table td {
+          font-family: inherit;
+          text-align: left; }
+        .contentContainer .activitySection .tableContainer table th {
+          font-size: 1.2rem;
+          font-weight: 700;
+          border-bottom: solid 1px var(--gray-color-light);
+          padding-bottom: .6rem; }
+        .contentContainer .activitySection .tableContainer table td {
+          font-size: 1.1rem;
+          padding-top: 2rem;
+          padding-right: 2rem; }
+          .contentContainer .activitySection .tableContainer table td.debit {
+            color: var(--red-color); }
+          .contentContainer .activitySection .tableContainer table td.credit {
+            color: var(--green-color); }
+    .contentContainer .activitySection .paginacaoSection {
+      margin-top: auto;
+      display: flex;
+      justify-content: center;
+      border-top: solid 1px var(--gray-color-light); }
+      .contentContainer .activitySection .paginacaoSection .paginacao {
+        font-size: 1.5rem;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        gap: 1rem; }
+        .contentContainer .activitySection .paginacaoSection .paginacao a {
+          display: flex;
+          align-items: center;
+          color: var(--gray-color-heavy); }
+          .contentContainer .activitySection .paginacaoSection .paginacao a.current {
+            color: black;
+            text-decoration: underline; }
+          .contentContainer .activitySection .paginacaoSection .paginacao a img {
+            width: 1.5rem; }
+  .contentContainer .newActivitySection {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-width: 25rem;
+    margin-left: 20rem; }
+    .contentContainer .newActivitySection h1 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem; }
+    .contentContainer .newActivitySection label {
+      letter-spacing: -.4px;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: .5rem; }
+    .contentContainer .newActivitySection .inputUsername,
+    .contentContainer .newActivitySection .inputValue {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 3rem; }
+      .contentContainer .newActivitySection .inputUsername span,
+      .contentContainer .newActivitySection .inputValue span {
+        flex: 0;
+        font-weight: 400;
+        font-size: 1.5rem;
+        margin-right: 5px;
+        padding-bottom: .3rem; }
+      .contentContainer .newActivitySection .inputUsername input,
+      .contentContainer .newActivitySection .inputValue input {
+        border: none;
+        flex: 1;
+        border-bottom: solid 1px black;
+        font-family: inherit;
+        font-weight: 400; }
+        .contentContainer .newActivitySection .inputUsername input:focus,
+        .contentContainer .newActivitySection .inputValue input:focus {
+          outline: none; }
+      .contentContainer .newActivitySection .inputUsername.erro input,
+      .contentContainer .newActivitySection .inputValue.erro input {
+        color: var(--red-color);
+        border-bottom: solid 1px var(--red-color); }
+    .contentContainer .newActivitySection .sendMoneyButton {
+      margin-top: 2rem; }
+
+.loginContainer {
+  border: 1px solid var(--gray-color-heavy);
+  border-radius: 14px;
+  padding: 4rem; }
+  .loginContainer .loginContent {
+    min-width: 28rem; }
+    .loginContainer .loginContent img {
+      width: 8rem;
+      border-radius: 10px;
+      margin-bottom: 5rem; }
+    .loginContainer .loginContent .formControl label {
+      display: block;
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: .4rem; }
+    .loginContainer .loginContent .formControl .inputUsername,
+    .loginContainer .loginContent .formControl .inputPassword {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 4rem; }
+      .loginContainer .loginContent .formControl .inputUsername input,
+      .loginContainer .loginContent .formControl .inputPassword input {
+        border: none;
+        flex: 1;
+        border-bottom: solid 1px black;
+        font-family: inherit;
+        font-weight: 400; }
+        .loginContainer .loginContent .formControl .inputUsername input:focus,
+        .loginContainer .loginContent .formControl .inputPassword input:focus {
+          outline: none; }
+      .loginContainer .loginContent .formControl .inputUsername.erro input,
+      .loginContainer .loginContent .formControl .inputPassword.erro input {
+        color: var(--red-color);
+        border-bottom: solid 1px var(--red-color); }
+      .loginContainer .loginContent .formControl .inputUsername img,
+      .loginContainer .loginContent .formControl .inputPassword img {
+        margin-bottom: 0;
+        width: 2rem; }
+    .loginContainer .loginContent .formControl .inputPassword {
+      display: flex;
+      align-items: center; }
+  .loginContainer .loginButton {
+    margin-top: 5rem; }
+
+.welcomeSection {
+  display: flex;
+  gap: 20rem;
+  align-items: center; }
+  .welcomeSection .introduction {
+    color: var(--black-color); }
+    .welcomeSection .introduction h1 {
+      font-weight: 600;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: -.2px; }
+    .welcomeSection .introduction p {
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: var(--gray-color-heavy); }
+  .welcomeSection .introIlustration {
+    width: 45rem; }
+
+.signUpSection .usernameStep {
+  display: flex;
+  flex-direction: column;
+  border-left: solid 2px black;
+  padding-left: 3rem;
+  max-width: 30rem; }
+  .signUpSection .usernameStep img {
+    align-self: center;
+    width: 20rem;
+    margin-bottom: 5rem; }
+  .signUpSection .usernameStep h2 {
+    font-family: 'IBM Plex Mono';
+    margin-bottom: 3rem; }
+  .signUpSection .usernameStep label {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1rem; }
+  .signUpSection .usernameStep .inputUsername {
+    position: relative;
+    display: flex;
+    margin-bottom: 4rem; }
+    .signUpSection .usernameStep .inputUsername span {
+      flex: 0;
+      font-weight: 400;
+      font-size: 2.2rem;
+      margin-right: 2px; }
+    .signUpSection .usernameStep .inputUsername input {
+      border: none;
+      flex: 1;
+      width: 100%;
+      border-bottom: solid 1px black;
+      font-family: inherit;
+      font-weight: 400; }
+      .signUpSection .usernameStep .inputUsername input:focus {
+        outline: none; }
+    .signUpSection .usernameStep .inputUsername.erro input {
+      color: var(--red-color);
+      border-bottom: solid 1px var(--red-color); }
+  .signUpSection .usernameStep p {
+    font-size: 1.2rem;
+    color: var(--gray-color-heavy);
+    font-weight: 400;
+    margin-bottom: 6rem; }
+
+.signUpSection .passwordStep {
+  display: flex;
+  flex-direction: column;
+  border-left: solid 2px black;
+  padding-left: 3rem;
+  max-width: 30rem; }
+  .signUpSection .passwordStep h2 {
+    font-family: 'IBM Plex Mono';
+    font-size: 2.2rem;
+    margin-bottom: 1rem; }
+  .signUpSection .passwordStep p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 6rem; }
+  .signUpSection .passwordStep .formgroup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem; }
+    .signUpSection .passwordStep .formgroup .formControl {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column; }
+      .signUpSection .passwordStep .formgroup .formControl label {
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 1rem; }
+      .signUpSection .passwordStep .formgroup .formControl input {
+        border: none;
+        flex: 1;
+        width: 100%;
+        border-bottom: solid 1px black;
+        font-family: inherit;
+        font-weight: 400; }
+        .signUpSection .passwordStep .formgroup .formControl input::placeholder {
+          font-weight: 400;
+          font-family: inherit; }
+        .signUpSection .passwordStep .formgroup .formControl input:focus {
+          outline: none; }
+      .signUpSection .passwordStep .formgroup .formControl .passwordInputContainer {
+        position: relative;
+        display: flex; }
+        .signUpSection .passwordStep .formgroup .formControl .passwordInputContainer input {
+          flex: 1; }
+        .signUpSection .passwordStep .formgroup .formControl .passwordInputContainer img {
+          margin-left: 1rem;
+          flex: 0 0 1;
+          width: 3rem; }
+        .signUpSection .passwordStep .formgroup .formControl .passwordInputContainer.erro input {
+          color: var(--red-color);
+          border-bottom: solid 1px var(--red-color); }
+  .signUpSection .passwordStep .submit {
+    margin-top: 6rem; }
+    .signUpSection .passwordStep .submit p {
+      color: var(--gray-color-heavy);
+      margin-bottom: 2rem; }
+      .signUpSection .passwordStep .submit p a {
+        font-weight: 700;
+        color: black;
+        text-decoration: underline; }
+
+.signUpSection .successStep {
+  border: 1px solid var(--gray-color-heavy);
+  border-radius: 14px;
+  padding: 4rem; }
+  .signUpSection .successStep .successContent {
+    max-width: 25rem; }
+    .signUpSection .successStep .successContent img {
+      width: 8rem;
+      border-radius: 10px;
+      margin-bottom: 5rem; }
+    .signUpSection .successStep .successContent h1 {
+      font-size: 2.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      margin-bottom: 2rem; }
+    .signUpSection .successStep .successContent h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-family: 'IBM Plex Mono', monospace;
+      margin-bottom: 2rem; }
+    .signUpSection .successStep .successContent p {
+      font-weight: 400;
+      color: var(--gray-color-heavy);
+      font-size: 1.2rem;
+      margin-bottom: 4rem; }
+
+.notFound {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .notFound img {
+    width: 50rem;
+    margin-bottom: 10rem; }
+  .notFound h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem; }
+  .notFound a {
+    font-size: 1.8rem;
+    text-decoration: underline; }

@@ -1,0 +1,31 @@
+button{
+    width: 100%;
+    border: none;
+    background-color: var(--white-color);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--black-color);
+    cursor: pointer;
+    border: solid 1.7px black;
+    border-radius: 11px;
+    padding: 1rem 0;
+    box-shadow: 4px 4px  var(--accent-color-primary);
+    transition: all 0.2s;
+
+    &:disabled{
+        cursor: default;
+        color: var(--gray-color-light);
+        border-color: var(--gray-color-light);
+        box-shadow: 0 0 var(--accent-color-primary);
+
+        &:active{
+        transform: translate(0,0);
+        }
+    }
+
+    &:active{
+        transform: translate(4px, 4px);
+        box-shadow: 0 0 var(--accent-color-primary);
+    }
+}

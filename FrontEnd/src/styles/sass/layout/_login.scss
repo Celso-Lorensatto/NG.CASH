@@ -1,0 +1,70 @@
+.loginContainer{
+    border: 1px solid var(--gray-color-heavy);
+    border-radius: 14px;
+    padding: 4rem;  
+    
+    .loginContent{
+        min-width: 28rem;
+
+        img{
+            width: 8rem;
+            border-radius: 10px;
+            margin-bottom: 5rem;
+        }
+
+        .formControl{
+            label{
+                display: block;
+                font-weight: 600;
+                font-size: 1.3rem;
+                margin-bottom: .4rem;
+            }
+            .inputUsername,
+            .inputPassword{
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin-bottom: 4rem;
+    
+    
+        
+                input{
+                    border: none;
+                    flex:1;
+                    border-bottom: solid 1px black;
+                    font-family: inherit;
+                    font-weight: 400;
+        
+                    &:focus{
+                        outline: none;
+                    }
+                }
+    
+                &.erro{
+                    input{
+                        color: var(--red-color);
+                        border-bottom: solid 1px var(--red-color);
+                    }
+                }
+    
+                img{
+                    margin-bottom: 0;
+                    width: 2rem;
+                }
+        
+            }
+    
+            .inputPassword{
+                display: flex;
+                align-items: center;
+            }
+        }
+
+    }
+
+    .loginButton{
+        margin-top: 5rem;
+    }
+
+
+}
