@@ -12,7 +12,10 @@ router.post('/login', authController.login)
 
 router.get('/logout', authController.logout)
 
+router.get('/me', authController.protect, userController.me)
+
 router.get('/:username', userController.getUser)
+
 
 
 module.exports = router;

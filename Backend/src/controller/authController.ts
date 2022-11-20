@@ -106,7 +106,9 @@ exports.protect = catchAsync(async (req:Request,res:Response,next:NextFunction) 
 
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
         token = req.headers.authorization.split(' ')[1]
-    } else if (req.cookies.jwt){
+    }
+    
+    if (req.cookies.jwt){
         token = req.cookies.jwt
     }
 
@@ -169,6 +171,7 @@ exports.logout = (req : Request, res: Response) => {
 
 exports.newAccount = catchAsync(async (req : Request,res : Response, next : NextFunction) => {
 const {username, password} = req.body;
+username.toLowerCase()
 const result:UserRequestData = await userValidation({username, password})
 
 if(result.errors){

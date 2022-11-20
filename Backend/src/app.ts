@@ -8,11 +8,14 @@ const globalErrorHandler = require('./controller/errorController')
 
 const express = require('express')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 
 const app : Application = express();
 
+app.use(cors())
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+
 
 //Dependencia para facilitar o acesso aos cookies dentro dos request
 app.use(cookieParser());

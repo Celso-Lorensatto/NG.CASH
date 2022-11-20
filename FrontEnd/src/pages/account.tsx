@@ -1,15 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Atividade from "../components/Account/Atividade";
 import NovaAtividade from "../components/Account/NovaAtividade";
+import {destroyCookie} from 'nookies'
+import Router from "next/router";
+import Link from "next/link";
+import { setupAPIClient } from "../utils/Axios";
+import { withSSRAuth } from "../utils/withSSRAuth";
+import { GetServerSidePropsContext, GetStaticPropsContext } from "next";
 
 export default function Account(){
-
+    const api = setupAPIClient();
     const [ balanceShown, setBalanceShown] = useState(false);
+
+    function logOut(){
+        destroyCookie(null, 'NG.CASH.token')
+        Router.push('/')
+    }
     
 
     const toggleBalance = () => {
         setBalanceShown(!balanceShown)
     }
+
+
   return(
     <>
       <div className="container">
@@ -28,7 +41,7 @@ export default function Account(){
             <div className="logSection">
                 <nav>
                     <ul>
-                        <li><a href="/login">sair</a></li>
+                        <li><Link href='/' onClick={logOut}>sair</Link></li>
                     </ul>
                 </nav>
             </div>
@@ -43,3 +56,14 @@ export default function Account(){
     </>
   )
 }
+
+export const getServerSideProps = withSSRAuth(async (ctx:GetServerSidePropsContext) => {
+    
+        const apiClient = setupAPIClient(ctx);
+        const response = await apiClient.get('/user/me');
+    
+    
+        return {
+            props: {}
+        }
+})

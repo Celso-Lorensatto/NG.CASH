@@ -1,3 +1,4 @@
+import Router from "next/router";
 import Button from "../../Button";
 
 export default function Success(){
@@ -12,7 +13,9 @@ export default function Success(){
 
                 <p>Você deu o primeiro passo em direção a independência financeira.</p>
 
-                <Button active={true} text='entrar na minha conta'/>
+                <Button active={true} onClick={() => {
+                    Router.push('/account')
+                }} text='entrar na minha conta'/>
             </div>
         </div>
     )

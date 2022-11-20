@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Header(){
     
     return(
@@ -10,8 +12,8 @@ export default function Header(){
         <div className="logSection">
             <nav>
                 <ul>
-                    <li className="" ><a href="/login">login</a></li>
-                    <li className=""><a href="/login">cadastrar</a></li>
+                    <li ><Link href='/login'>login</Link></li>
+                    <li ><Link href="/cadastro">cadastrar</Link></li>
                 </ul>
             </nav>
         </div>

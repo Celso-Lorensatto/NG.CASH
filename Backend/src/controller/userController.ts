@@ -34,3 +34,12 @@ exports.getUser = catchAsync(async (req:Request, res:Response, next: NextFunctio
         }
     })
 })
+
+exports.me = catchAsync(async(req:Request, res:Response, next:NextFunction) => {
+    const {user} = res.locals
+
+    res.status(200).json({
+        status:'ok',
+        data:user
+    })
+})

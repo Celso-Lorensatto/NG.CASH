@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:dev": "nodemon server.ts"
+    "dev": "nodemon server.ts"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -21,6 +21,7 @@
     "@prisma/client": "^4.6.1",
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "uuid": "^9.0.0",
