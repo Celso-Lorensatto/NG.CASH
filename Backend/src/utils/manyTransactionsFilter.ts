@@ -24,15 +24,15 @@ export class ManyTransactionsFilter {
 
     constructor(accountId:string, transactionDb: PrismaTransactionRepository){
         this.accountId = accountId;
-        this.queryString = `SELECT * FROM "Transactions" WHERE `
+        this.queryString = `SELECT transactions.id, transactions.value,	transactions."createdAt",usersX.username as "from",	usersY.username as "to" FROM "Transactions" as TRANSACTIONS inner join "Users" as UsersX on usersX."accountId" = transactions."debitedAccountId" inner join "Users" as UsersY on usersY."accountId" = transactions."creditedAccountId" WHERE `
         this.transactionDb = transactionDb;
     }
 
     private chainQueryTest(){
-        if(this.queryString != `SELECT * FROM "Transactions" WHERE `) this.queryString += ' AND '
+        if(this.queryString != `SELECT transactions.id, transactions.value,	transactions."createdAt",usersX.username as "from",	usersY.username as "to" FROM "Transactions" as TRANSACTIONS inner join "Users" as UsersX on usersX."accountId" = transactions."debitedAccountId" inner join "Users" as UsersY on usersY."accountId" = transactions."creditedAccountId" WHERE `) this.queryString += ' AND '
     }
 
-    public filterType(type:string){
+    public filterType(type?:string){
 
         this.chainQueryTest()
 
@@ -51,7 +51,7 @@ export class ManyTransactionsFilter {
         return this;
     }
 
-    public filterDate(date:string){
+    public filterDate(date?:string){
         if(date){
 
             if(date.match(/^\d{4}(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1])$/)){
@@ -73,8 +73,8 @@ export class ManyTransactionsFilter {
 
     
 
-    public async filterPagination(page:number){
-        const [total] = await this.transactionDb.customQuery(this.queryString.replace('*',`COUNT(*) as total`).replace('ORDER BY "createdAt" DESC', " ")) as queryResultRows
+    public async filterPagination(page?:number){
+        const [total] = await this.transactionDb.customQuery(this.queryString.replace(`transactions.id, transactions.value,	transactions."createdAt",usersX.username as "from",	usersY.username as "to"`,`COUNT(*) as total`).replace('ORDER BY "createdAt" DESC', " ")) as queryResultRows
         this.totalPages = parseInt(total.total) / this.pagination > Math.trunc(parseInt(total.total) / this.pagination) 
         ? Math.trunc(parseInt(total.total) / this.pagination) + 1 :  parseInt(total.total) / this.pagination
         if(page){

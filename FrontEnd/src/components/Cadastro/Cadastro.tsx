@@ -4,6 +4,7 @@ import PasswordStep from "./steps/PasswordStep";
 import Success from "./steps/Success";
 import UsernameStep from "./steps/UsernameStep";
 import {setCookie} from 'nookies'
+import LoadingScreen from "../LoadingScreen";
 
 export default function Cadastro(){
     const api = setupAPIClient();
@@ -42,14 +43,10 @@ export default function Cadastro(){
     <section className="signUpSection">
         {!userNameStepFinished && <UsernameStep username={username} setUserName={setUsername} setUserNameStepFinished={setUserNameStepFinished} />}
         {userNameStepFinished && !passwordStepFinished && <PasswordStep password={password} setPassword={setPassword} setPasswordStepFinished={setpasswordStepFinished} username={username} handleSignin={handleSignin} /> }
-        {
-            isLoading && (
-                <div className="creatingAccount">
-                    <h1>Criando Conta...</h1>
-                    <img className="spinner" src="/img/icons/spinner.svg" alt="" />
-                </div>
-            )
-        }
+
+        {isLoading && <LoadingScreen state={isLoading} textFeedback="Criando Conta ..." className="creatingAccount" />}
+           
+        
         {success && <Success/>}
     </section>
 

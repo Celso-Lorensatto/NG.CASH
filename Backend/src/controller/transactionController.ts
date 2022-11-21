@@ -22,23 +22,28 @@ type Transaction = {
 }
 
 exports.newTransaction = catchAsync(async (req:Request, res:Response, next:NextFunction) => {
-    const {value, debitedAccountId, creditedAccountId}  = req.body;
+    const {value, username}  = req.body;
+    const {user} = res.locals
 
-    if(!value || !debitedAccountId || !creditedAccountId) {
+    if(!value || !username) {
         return next(
-            new AppError('parâmetros: value | debitedAccountId | creditedAccountId obrigatórios', 400)
+            new AppError('Parâmetro "username" obrigatório', 400)
         )
     }
 
-    if(debitedAccountId === creditedAccountId){
+    if(user.username === username){
         return next(
             new AppError('Conta debitada e creditada não podem ser a mesma', 401)
         )
     }
 
-    const debitedAccount = await accountDb.findOne(debitedAccountId);
+    const userFrom = await userDb.findOne({username:user.username, excludeAccount:false})
+    
+    const userTo = await userDb.findOne({username, excludeAccount:false})
 
-    const creditedAccount = await accountDb.findOne(creditedAccountId);
+    const debitedAccount = await accountDb.findOne(userFrom!.accountId);
+
+    const creditedAccount = await accountDb.findOne(userTo!.accountId);
 
     if(!debitedAccount || !creditedAccount){
         return next(

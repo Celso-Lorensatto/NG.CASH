@@ -1,4 +1,4 @@
-@keyframes introductionContainer {
+@keyframes loadingSpinnerComponentHide {
   0% {
     opacity: 100%;
   }
@@ -9,140 +9,13 @@
   }
 }
 
-@keyframes introductionOpacityContent {
+
+@keyframes loadingSpinnerComponentEntrace {
   0% {
     opacity: 0%;
   }
-  100% {
-    opacity: 100%;
-  }
-}
-
-@keyframes introductionPrograssionBar {
-  0% {
-    flex: 0 0 100%;
-  }
-  100% {
-    flex: 0 0 0%;
-  }
-}
-
-@keyframes introductionFontEntrace {
-  0% {
-    transform: translate(-10px, 0px);
-  }
-
-  100% {
-    transform: translate(0px, 0px);
-    opacity: 100%;
-  }
-}
-
-@keyframes introductionScrollBarEntrace {
-  0% {
-    overflow: hidden;
-  }
-
-  100% {
-    overflow: overlay;
-  }
-}
-
-@keyframes headerStikyRollDown {
-  100% {
-    top: 0;
-  }
-}
-
-@keyframes stickyFadeOut {
-  0% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 0%;
-  }
-}
-@keyframes stickyFadeIn {
-  0% {
-    opacity: 0%;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
-
-@keyframes elementEntrace {
-  0% {
-    transform: translate(0px, -10px);
-    opacity: 0%;
-  }
-
-  100% {
-    transform: translate(0px, 0px);
-    opacity: 100%;
-  }
-}
-
-@keyframes sectionOnViewEntrace {
-  0% {
-    opacity: 0%;
-    transform: translate(0rem, -2rem);
-  }
-
-  100% {
-    transform: translate(0px, 0px);
-    opacity: 100%;
-  }
-}
-
-@keyframes arrowUpEntraceAnimation {
-  0% {
-    opacity: 0%;
-    visibility: hidden;
-    scale: 0;
-  }
 
   100% {
     opacity: 100%;
-    visibility: initial;
-    scale: 1;
-  }
-}
-
-@keyframes arrowUpOutAnimation {
-  0% {
-    opacity: 100%;
-    visibility: initial;
-    scale: 1;
-  }
-
-  100% {
-    opacity: 0%;
-    visibility: hidden;
-    scale: 0;
-  }
-}
-
-@keyframes modalEntrace {
-  0% {
-    opacity: 0%;
-    transform: scale(0);
-  }
-
-  100% {
-    opacity: 100%;
-    transform: scale(1);
-  }
-}
-
-@keyframes modalOut {
-  0% {
-    opacity: 100%;
-    scale: 1;
-  }
-
-  100% {
-    opacity: 0%;
-    scale: 0;
   }
 }

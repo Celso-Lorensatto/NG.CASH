@@ -5,6 +5,8 @@
 @import "components/button";
 @import "components/error";
 @import "components/inputErrorElement";
+@import "components/loadingSpinnerComponent";
+
 
 @import "base/animations";
 @import "base/base";
@@ -16,5 +18,4 @@
 @import "layout/welcome";
 @import "layout/signup";
 
-@import "pages/index";
 @import "pages/404";

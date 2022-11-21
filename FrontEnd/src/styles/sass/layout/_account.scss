@@ -55,6 +55,12 @@ header{
                 width: 4rem;
             }
         }
+
+        .spinner{
+            margin-left: 5rem;
+            width: 5rem;
+            filter: invert(100%)
+        }
     
     }
 
@@ -76,7 +82,12 @@ header{
 
 
 .contentContainer{
-    display: flex;
+    h1{
+
+    }
+    
+    .transactionsContent{
+        display: flex;
     
     .activitySection{
         display: flex;
@@ -111,6 +122,20 @@ header{
                     &:focus{
                         outline: none;
                     }
+                }
+                .clearFilter{
+                    animation-name: loadingSpinnerComponentEntrace;
+                    animation-duration: .3s;
+                    animation-fill-mode: both;
+
+                    margin-left: 2rem;
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                    color: white;
+                    background-color: var(--red-color);
+                    padding: 0rem 2rem;   
+                    border-radius: 20px;
+                    cursor: pointer;
                 }
                 
                 
@@ -207,12 +232,12 @@ header{
 
 
             table{
-                
+                align-self: flex-start;
                 border-collapse: collapse;
                 width: 100%;
+                min-width: 50rem;
     
                 th, td{
-                    font-family: inherit;
                     text-align: left;
                 }
     
@@ -224,7 +249,8 @@ header{
                 }
     
                 td{
-                    font-size: 1.1rem;
+                    font-weight: 500;
+                    font-size: 1.2rem;
                     padding-top: 2rem;
                     padding-right: 2rem;
     
@@ -334,5 +360,6 @@ header{
             margin-top: 2rem;
         }
     
+    }
     }
 }

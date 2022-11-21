@@ -111,7 +111,7 @@ exports.protect = catchAsync(async (req:Request,res:Response,next:NextFunction) 
     if (req.cookies.jwt){
         token = req.cookies.jwt
     }
-
+    
     if(!token || token === 'null') {
         return next (
             new AppError('Você não esta autenticado ! Por favor logue na sua conta', 401)

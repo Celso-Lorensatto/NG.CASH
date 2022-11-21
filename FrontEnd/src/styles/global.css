@@ -62,105 +62,45 @@ button {
   top: 110%;
   font-size: 1.3rem !important; }
 
-@keyframes introductionContainer {
+.defaultFullScreenLoading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.452);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10rem;
+  animation-name: loadingSpinnerComponentEntrace;
+  animation-duration: .3s;
+  animation-fill-mode: both; }
+  .defaultFullScreenLoading h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: 3rem; }
+
+.loadingHidden {
+  animation-name: loadingSpinnerComponentHide;
+  animation-fill-mode: both;
+  animation-duration: .3s; }
+
+@keyframes loadingSpinnerComponentHide {
   0% {
     opacity: 100%; }
   100% {
     opacity: 0%;
     visibility: hidden; } }
 
-@keyframes introductionOpacityContent {
+@keyframes loadingSpinnerComponentEntrace {
   0% {
     opacity: 0%; }
   100% {
     opacity: 100%; } }
-
-@keyframes introductionPrograssionBar {
-  0% {
-    flex: 0 0 100%; }
-  100% {
-    flex: 0 0 0%; } }
-
-@keyframes introductionFontEntrace {
-  0% {
-    transform: translate(-10px, 0px); }
-  100% {
-    transform: translate(0px, 0px);
-    opacity: 100%; } }
-
-@keyframes introductionScrollBarEntrace {
-  0% {
-    overflow: hidden; }
-  100% {
-    overflow: overlay; } }
-
-@keyframes headerStikyRollDown {
-  100% {
-    top: 0; } }
-
-@keyframes stickyFadeOut {
-  0% {
-    opacity: 100%; }
-  100% {
-    opacity: 0%; } }
-
-@keyframes stickyFadeIn {
-  0% {
-    opacity: 0%; }
-  100% {
-    opacity: 100%; } }
-
-@keyframes elementEntrace {
-  0% {
-    transform: translate(0px, -10px);
-    opacity: 0%; }
-  100% {
-    transform: translate(0px, 0px);
-    opacity: 100%; } }
-
-@keyframes sectionOnViewEntrace {
-  0% {
-    opacity: 0%;
-    transform: translate(0rem, -2rem); }
-  100% {
-    transform: translate(0px, 0px);
-    opacity: 100%; } }
-
-@keyframes arrowUpEntraceAnimation {
-  0% {
-    opacity: 0%;
-    visibility: hidden;
-    scale: 0; }
-  100% {
-    opacity: 100%;
-    visibility: initial;
-    scale: 1; } }
-
-@keyframes arrowUpOutAnimation {
-  0% {
-    opacity: 100%;
-    visibility: initial;
-    scale: 1; }
-  100% {
-    opacity: 0%;
-    visibility: hidden;
-    scale: 0; } }
-
-@keyframes modalEntrace {
-  0% {
-    opacity: 0%;
-    transform: scale(0); }
-  100% {
-    opacity: 100%;
-    transform: scale(1); } }
-
-@keyframes modalOut {
-  0% {
-    opacity: 100%;
-    scale: 1; }
-  100% {
-    opacity: 0%;
-    scale: 0; } }
 
 *,
 *::after,
@@ -278,44 +218,60 @@ header .balanceSection {
       cursor: pointer;
       max-height: 2rem;
       width: 4rem; }
+  header .balanceSection .spinner {
+    margin-left: 5rem;
+    width: 5rem;
+    filter: invert(100%); }
 
 header .logSection nav ul li a {
   font-size: 2.5rem !important;
   margin-right: 2rem !important; }
 
-.contentContainer {
+.contentContainer .transactionsContent {
   display: flex; }
-  .contentContainer .activitySection {
+  .contentContainer .transactionsContent .activitySection {
     display: flex;
     flex-direction: column;
     min-height: 50rem;
     min-width: 40rem; }
-    .contentContainer .activitySection h1 {
+    .contentContainer .transactionsContent .activitySection h1 {
       font-size: 2.5rem;
       margin-bottom: 1.5rem; }
-    .contentContainer .activitySection .filterSection {
+    .contentContainer .transactionsContent .activitySection .filterSection {
       display: flex;
       flex-wrap: nowrap; }
-      .contentContainer .activitySection .filterSection .filters {
+      .contentContainer .transactionsContent .activitySection .filterSection .filters {
         display: flex;
         flex-wrap: nowrap;
         margin-bottom: 2rem; }
-        .contentContainer .activitySection .filterSection .filters input {
+        .contentContainer .transactionsContent .activitySection .filterSection .filters input {
           width: 13rem;
           border: none;
           border-bottom: solid 2px black; }
-          .contentContainer .activitySection .filterSection .filters input::placeholder {
+          .contentContainer .transactionsContent .activitySection .filterSection .filters input::placeholder {
             font-weight: 400;
             font-size: 1.2rem; }
-          .contentContainer .activitySection .filterSection .filters input:focus {
+          .contentContainer .transactionsContent .activitySection .filterSection .filters input:focus {
             outline: none; }
-      .contentContainer .activitySection .filterSection .dropDownContainer {
+        .contentContainer .transactionsContent .activitySection .filterSection .filters .clearFilter {
+          animation-name: loadingSpinnerComponentEntrace;
+          animation-duration: .3s;
+          animation-fill-mode: both;
+          margin-left: 2rem;
+          font-weight: 400;
+          font-size: 1.5rem;
+          color: white;
+          background-color: var(--red-color);
+          padding: 0rem 2rem;
+          border-radius: 20px;
+          cursor: pointer; }
+      .contentContainer .transactionsContent .activitySection .filterSection .dropDownContainer {
         position: relative;
         width: 7rem;
         margin-left: 1.2rem; }
-        .contentContainer .activitySection .filterSection .dropDownContainer:hover .dropDownHeader img {
+        .contentContainer .transactionsContent .activitySection .filterSection .dropDownContainer:hover .dropDownHeader img {
           transform: translate(0, -3px); }
-        .contentContainer .activitySection .filterSection .dropDownContainer .dropDownHeader {
+        .contentContainer .transactionsContent .activitySection .filterSection .dropDownContainer .dropDownHeader {
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -327,126 +283,128 @@ header .logSection nav ul li a {
           color: var(--gray-color-heavy);
           background: #ffffff;
           border-bottom: solid 2px black; }
-          .contentContainer .activitySection .filterSection .dropDownContainer .dropDownHeader img {
+          .contentContainer .transactionsContent .activitySection .filterSection .dropDownContainer .dropDownHeader img {
             transition: all .2s;
             width: 1.5rem; }
-        .contentContainer .activitySection .filterSection .dropDownContainer .dropDownListContainer {
+        .contentContainer .transactionsContent .activitySection .filterSection .dropDownContainer .dropDownListContainer {
           position: absolute;
           left: 0;
           right: 0; }
-          .contentContainer .activitySection .filterSection .dropDownContainer .dropDownListContainer .dropDownList {
+          .contentContainer .transactionsContent .activitySection .filterSection .dropDownContainer .dropDownListContainer .dropDownList {
             background: #ffffff;
             box-sizing: border-box;
             font-size: 1.3rem;
             font-weight: 500; }
-            .contentContainer .activitySection .filterSection .dropDownContainer .dropDownListContainer .dropDownList:first-child {
+            .contentContainer .transactionsContent .activitySection .filterSection .dropDownContainer .dropDownListContainer .dropDownList:first-child {
               padding-top: 0.8em; }
-            .contentContainer .activitySection .filterSection .dropDownContainer .dropDownListContainer .dropDownList .listItem {
+            .contentContainer .transactionsContent .activitySection .filterSection .dropDownContainer .dropDownListContainer .dropDownList .listItem {
               list-style: none;
               margin-bottom: 0.8em;
               border-bottom: solid 1px black; }
-      .contentContainer .activitySection .filterSection img {
+      .contentContainer .transactionsContent .activitySection .filterSection img {
         margin-left: auto;
         margin-bottom: auto;
         width: 2rem; }
-    .contentContainer .activitySection .tableContainer {
+    .contentContainer .transactionsContent .activitySection .tableContainer {
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center; }
-      .contentContainer .activitySection .tableContainer .noTransference {
+      .contentContainer .transactionsContent .activitySection .tableContainer .noTransference {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center; }
-        .contentContainer .activitySection .tableContainer .noTransference img {
+        .contentContainer .transactionsContent .activitySection .tableContainer .noTransference img {
           width: 20rem; }
-        .contentContainer .activitySection .tableContainer .noTransference h1 {
+        .contentContainer .transactionsContent .activitySection .tableContainer .noTransference h1 {
           margin-top: 3rem;
           font-weight: 400;
           font-size: 1.5rem;
           font-family: 'IBM Plex Mono', monospace; }
-      .contentContainer .activitySection .tableContainer table {
+      .contentContainer .transactionsContent .activitySection .tableContainer table {
+        align-self: flex-start;
         border-collapse: collapse;
-        width: 100%; }
-        .contentContainer .activitySection .tableContainer table th, .contentContainer .activitySection .tableContainer table td {
-          font-family: inherit;
+        width: 100%;
+        min-width: 50rem; }
+        .contentContainer .transactionsContent .activitySection .tableContainer table th, .contentContainer .transactionsContent .activitySection .tableContainer table td {
           text-align: left; }
-        .contentContainer .activitySection .tableContainer table th {
+        .contentContainer .transactionsContent .activitySection .tableContainer table th {
           font-size: 1.2rem;
           font-weight: 700;
           border-bottom: solid 1px var(--gray-color-light);
           padding-bottom: .6rem; }
-        .contentContainer .activitySection .tableContainer table td {
-          font-size: 1.1rem;
+        .contentContainer .transactionsContent .activitySection .tableContainer table td {
+          font-weight: 500;
+          font-size: 1.2rem;
           padding-top: 2rem;
           padding-right: 2rem; }
-          .contentContainer .activitySection .tableContainer table td.debit {
+          .contentContainer .transactionsContent .activitySection .tableContainer table td.debit {
             color: var(--red-color); }
-          .contentContainer .activitySection .tableContainer table td.credit {
+          .contentContainer .transactionsContent .activitySection .tableContainer table td.credit {
             color: var(--green-color); }
-    .contentContainer .activitySection .paginacaoSection {
+    .contentContainer .transactionsContent .activitySection .paginacaoSection {
       margin-top: auto;
       display: flex;
       justify-content: center;
       border-top: solid 1px var(--gray-color-light); }
-      .contentContainer .activitySection .paginacaoSection .paginacao {
+      .contentContainer .transactionsContent .activitySection .paginacaoSection .paginacao {
         font-size: 1.5rem;
         font-weight: 400;
         display: flex;
         align-items: center;
         gap: 1rem; }
-        .contentContainer .activitySection .paginacaoSection .paginacao a {
+        .contentContainer .transactionsContent .activitySection .paginacaoSection .paginacao a {
           display: flex;
           align-items: center;
           color: var(--gray-color-heavy); }
-          .contentContainer .activitySection .paginacaoSection .paginacao a.current {
+          .contentContainer .transactionsContent .activitySection .paginacaoSection .paginacao a.current {
             color: black;
             text-decoration: underline; }
-          .contentContainer .activitySection .paginacaoSection .paginacao a img {
+          .contentContainer .transactionsContent .activitySection .paginacaoSection .paginacao a img {
             width: 1.5rem; }
-  .contentContainer .newActivitySection {
+  .contentContainer .transactionsContent .newActivitySection {
     display: flex;
     flex-direction: column;
     height: auto;
     min-width: 25rem;
     margin-left: 20rem; }
-    .contentContainer .newActivitySection h1 {
+    .contentContainer .transactionsContent .newActivitySection h1 {
       font-size: 2.5rem;
       margin-bottom: 3rem; }
-    .contentContainer .newActivitySection label {
+    .contentContainer .transactionsContent .newActivitySection label {
       letter-spacing: -.4px;
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: .5rem; }
-    .contentContainer .newActivitySection .inputUsername,
-    .contentContainer .newActivitySection .inputValue {
+    .contentContainer .transactionsContent .newActivitySection .inputUsername,
+    .contentContainer .transactionsContent .newActivitySection .inputValue {
       position: relative;
       display: flex;
       align-items: center;
       margin-bottom: 3rem; }
-      .contentContainer .newActivitySection .inputUsername span,
-      .contentContainer .newActivitySection .inputValue span {
+      .contentContainer .transactionsContent .newActivitySection .inputUsername span,
+      .contentContainer .transactionsContent .newActivitySection .inputValue span {
         flex: 0;
         font-weight: 400;
         font-size: 1.5rem;
         margin-right: 5px;
         padding-bottom: .3rem; }
-      .contentContainer .newActivitySection .inputUsername input,
-      .contentContainer .newActivitySection .inputValue input {
+      .contentContainer .transactionsContent .newActivitySection .inputUsername input,
+      .contentContainer .transactionsContent .newActivitySection .inputValue input {
         border: none;
         flex: 1;
         border-bottom: solid 1px black;
         font-family: inherit;
         font-weight: 400; }
-        .contentContainer .newActivitySection .inputUsername input:focus,
-        .contentContainer .newActivitySection .inputValue input:focus {
+        .contentContainer .transactionsContent .newActivitySection .inputUsername input:focus,
+        .contentContainer .transactionsContent .newActivitySection .inputValue input:focus {
           outline: none; }
-      .contentContainer .newActivitySection .inputUsername.erro input,
-      .contentContainer .newActivitySection .inputValue.erro input {
+      .contentContainer .transactionsContent .newActivitySection .inputUsername.erro input,
+      .contentContainer .transactionsContent .newActivitySection .inputValue.erro input {
         color: var(--red-color);
         border-bottom: solid 1px var(--red-color); }
-    .contentContainer .newActivitySection .sendMoneyButton {
+    .contentContainer .transactionsContent .newActivitySection .sendMoneyButton {
       margin-top: 2rem; }
 
 .loginContainer {

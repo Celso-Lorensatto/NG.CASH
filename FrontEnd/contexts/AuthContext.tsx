@@ -14,7 +14,8 @@ type SignInCredentials = {
 
 type AuthContextData = {
     signIn(credentials:SignInCredentials):Promise<void>;
-    isAuthenticated:boolean
+    isAuthenticated:boolean;
+    username?:string
 }
 
 type AuthProviderProps = {
@@ -30,10 +31,13 @@ export function AuthProvider({children}:AuthProviderProps){
 
     useEffect(() => {
         api.get('/user/me').then(response => {
-            const {username} = response.data
-            setUser({username})
+            const result = response.data.data
+
+            setUser({username: result?.username}) 
+            
         })
     },[])
+
 
     async function signIn({username, password}:SignInCredentials){
         const response = await api.post('/user/login',{
@@ -55,8 +59,9 @@ export function AuthProvider({children}:AuthProviderProps){
         Router.push('/account')
     }
 
+
     return(
-        <AuthContext.Provider value={{signIn, isAuthenticated}}>
+        <AuthContext.Provider value={{signIn, username:user?.username, isAuthenticated}}>
             {children}
         </AuthContext.Provider>
     )
