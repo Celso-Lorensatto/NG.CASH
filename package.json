@@ -1,0 +1,20 @@
+{
+  "name": "ng.cash_challange",
+  "version": "1.0.0",
+  "description": "descrição do desafio https://ngcash.notion.site/Processo-Seletivo-NG-TRYBE-223de32e1ed047f2aa90cc0da84754ee",
+  "main": "index.js",
+  "scripts":{
+    "startBack":"cd ${PWD}/Backend && npm i -f && npx prisma generate && npm run dev",
+    "startFront":"cd ${PWD}/FrontEnd && npm i -f && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Celso-Lorensatto/NG.CASH.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Celso-Lorensatto/NG.CASH/issues"
+  },
+  "homepage": "https://github.com/Celso-Lorensatto/NG.CASH#readme"
+}
