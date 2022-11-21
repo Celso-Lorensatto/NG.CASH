@@ -300,11 +300,29 @@ header{
     }
     
     .newActivitySection{
+        position: relative;
         display: flex;
         flex-direction: column;
         height: auto;
         min-width: 25rem;
         margin-left: 20rem;
+
+        .newActivityMessage{
+            background-color: var(--green-color);
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 105%;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+
+            
+            span{
+                color: white;
+                font-size: 2rem;
+            }
+        }
 
 
 
@@ -358,6 +376,24 @@ header{
 
         .sendMoneyButton{
             margin-top: 2rem;
+        }
+
+        .sendingMoney{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            h1{
+                font-weight: 500;
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 2rem;
+            }
+
+            img{
+                width: 7rem;
+            }
         }
     
     }

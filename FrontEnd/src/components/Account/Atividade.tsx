@@ -49,7 +49,6 @@ export default function Atividade({ username ,onLoadTransitions}: AtividadeProps
 
         api.get(`/transaction?${page != 1 && `page=${page}`}&${!!selectedOption && `type=${selectedOption.toLowerCase()}`}&${!!dateFilter && `date=${dateFilter}`}`).then(response => {
            const {result} = response.data
-           console.log(result)
            setNewUserTransitionsData(result)
         })
 

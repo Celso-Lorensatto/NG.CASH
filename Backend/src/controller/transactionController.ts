@@ -25,7 +25,7 @@ exports.newTransaction = catchAsync(async (req:Request, res:Response, next:NextF
     const {value, username}  = req.body;
     const {user} = res.locals
 
-    if(!value || !username) {
+    if(!parseFloat(value) || !username) {
         return next(
             new AppError('Parâmetro "username" obrigatório', 400)
         )
@@ -50,6 +50,8 @@ exports.newTransaction = catchAsync(async (req:Request, res:Response, next:NextF
             new AppError(`Conta expecificada pelo ID do ${debitedAccount ?? 'debitedAccount, '}${creditedAccount ?? 'creditedAccount, '}Não existe(m).`)
         )
     }
+
+    console.log(debitedAccount.balance, userFrom?.username)
 
     if(debitedAccount.balance < value){
         return next(

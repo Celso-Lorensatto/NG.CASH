@@ -364,11 +364,24 @@ header .logSection nav ul li a {
           .contentContainer .transactionsContent .activitySection .paginacaoSection .paginacao a img {
             width: 1.5rem; }
   .contentContainer .transactionsContent .newActivitySection {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: auto;
     min-width: 25rem;
     margin-left: 20rem; }
+    .contentContainer .transactionsContent .newActivitySection .newActivityMessage {
+      background-color: var(--green-color);
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 105%;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 15px; }
+      .contentContainer .transactionsContent .newActivitySection .newActivityMessage span {
+        color: white;
+        font-size: 2rem; }
     .contentContainer .transactionsContent .newActivitySection h1 {
       font-size: 2.5rem;
       margin-bottom: 3rem; }
@@ -406,6 +419,18 @@ header .logSection nav ul li a {
         border-bottom: solid 1px var(--red-color); }
     .contentContainer .transactionsContent .newActivitySection .sendMoneyButton {
       margin-top: 2rem; }
+    .contentContainer .transactionsContent .newActivitySection .sendingMoney {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; }
+      .contentContainer .transactionsContent .newActivitySection .sendingMoney h1 {
+        font-weight: 500;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 2rem; }
+      .contentContainer .transactionsContent .newActivitySection .sendingMoney img {
+        width: 7rem; }
 
 .loginContainer {
   position: relative;

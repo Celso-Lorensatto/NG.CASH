@@ -38,7 +38,7 @@ export default function Account(){
     const api = setupAPIClient();
     const [ balanceShown, setBalanceShown] = useState
     (false);
-    const {data, isLoading, error} = useQuery('Account', async () => {
+    const {data, isLoading, error, refetch} = useQuery('Account', async () => {
         const response = {result:{}}
 
         response.result = await api.get('/account').then((data) => data.data)
@@ -108,7 +108,7 @@ export default function Account(){
                 <h1>Saudações, {account?.username}</h1>
                 <div className="transactionsContent">
                     <Atividade username={account?.username} onLoadTransitions={account?.transactions}/>
-                    <NovaAtividade balance={account?.balance} currentUser={account?.username}/>
+                    <NovaAtividade balance={account?.balance} updateTransactions={refetch} currentUser={account?.username}/>
                 </div>
             </div>
         </div>

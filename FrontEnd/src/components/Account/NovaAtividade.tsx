@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { QueryObserverResult, useQuery } from "react-query";
 import { setupAPIClient } from "../../utils/Axios";
 import Button from "../Button";
 import InputErrorElement from "../InputErrorElement";
@@ -6,14 +7,17 @@ import InputErrorElement from "../InputErrorElement";
 type NovaAtividadeProps = {
     currentUser:string
     balance:string
+    updateTransactions:() => void
 }
 
-export default function NovaAtividade({currentUser, balance}:NovaAtividadeProps){
+export default function NovaAtividade({currentUser, balance, updateTransactions}:NovaAtividadeProps){
     const api = setupAPIClient();
     const [username, setUsername] = useState('')
     const [value, setValue] = useState('');
     const [usernameErrorState, setUsernameErrorState] = useState('')
     const [valueErrorState, setValueErrorState] = useState('')
+    const [sending, setSending] = useState(false);
+    const [newActivityMessage, setNewActivityMessage] = useState('')
 
     async function validUsername(){
         if(!username){
@@ -37,8 +41,41 @@ export default function NovaAtividade({currentUser, balance}:NovaAtividadeProps)
         setUsernameErrorState('')
     }
 
+    async function handleNewActivity(){
+        setSending(true)
+        const result = await api.post('/transaction/new', {
+            value:parseFloat(value),
+            username:'@'+username
+        }).catch(err => {
+            setNewActivityMessage('Algo de errado ocorreu :(')
+            setTimeout(() => {
+                setNewActivityMessage('')
+            }, 3000)
+            setSending(false)
+        })
+
+        setNewActivityMessage('Quantia enviada com sucesso !')
+        setTimeout(() => {
+            setNewActivityMessage('')
+        }, 3000)
+        setSending(false)
+        setUsername('')
+        setValue('')
+        updateTransactions()
+    }
+
     return(
         <div className="newActivitySection">
+
+            {
+                newActivityMessage && (
+
+            <div className="newActivityMessage">
+                <span>{newActivityMessage}</span>
+            </div>
+                )
+            }
+
         
             <h1>Nova transferência</h1>
 
@@ -47,7 +84,6 @@ export default function NovaAtividade({currentUser, balance}:NovaAtividadeProps)
                     <span>@</span>
                     <input type="text" onBlur={validUsername} name="username" onChange={e => {
                         setUsername(e.target.value)
-                        console.log(e.target.value, currentUser)
                         if('@'+e.target.value == currentUser){
                             setUsernameErrorState('Não é possível transferir para sí mesmo !')
                         }
@@ -70,8 +106,14 @@ export default function NovaAtividade({currentUser, balance}:NovaAtividadeProps)
                     {valueErrorState && (<InputErrorElement message={valueErrorState}/>)}
             </div>
 
-
-            <Button className="sendMoneyButton" active={false} text="enviar quantia"/>
+            {sending ? 
+            <div className="sendingMoney">
+                <h1>enviando quantia...</h1>
+                <img className="spinner sendingMoney" src="/img/icons/spinner.svg" alt="" />
+            </div>
+            : 
+            <Button className="sendMoneyButton" onClick={handleNewActivity} active={!!username && !!value && !usernameErrorState && !valueErrorState } text="enviar quantia"/>}
+            
         </div>
     )
 }
