@@ -1,5 +1,13 @@
 # NG.CASH projeto
 
+<h4>Nota:</h4>
+
+<h3>Abaixo alguns pontos importantes para salientar:</h3>
+
+- Dentro da raiz do projeto á um arquivo README.md explicando como executar a aplicação;
+- no diretório /Backend se encontra um README.md com a documentação completa da api desenvolvida para aplicação;
+- no diretório /FrontEnd também existirá um README.md com detalhes sobre a interface de usuário desenvolvida para o projeto em questão;
+
 <p>escopo do projeto:</p>
 
 https://ngcash.notion.site/Processo-Seletivo-NG-TRYBE-223de32e1ed047f2aa90cc0da84754ee
@@ -130,3 +138,4 @@ no comando: <code>npm run startBack</code>
 
 
 Procure pelo bloco de código acima e onde esta o valor 3000 ao lado de 'http://localhost:' inclua a nova porta de permitiu o funcionamento o backEnd.
+
