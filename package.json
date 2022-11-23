@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "descrição do desafio https://ngcash.notion.site/Processo-Seletivo-NG-TRYBE-223de32e1ed047f2aa90cc0da84754ee",
   "main": "index.js",
-  "scripts":{
-    "startBack":"cd ${PWD}/Backend && npm i -f && npx prisma generate && npx prisma migrate dev && npm run dev",
-    "startFront":"cd ${PWD}/FrontEnd && npm i -f && npm run dev"
+  "scripts": {
+    "startBackWindows": "cd %cd%/Backend && npm i -f && npx prisma generate && npx prisma migrate dev && npm run dev",
+    "startBack": "cd ${PWD}/Backend && npm i -f && npx prisma generate && npx prisma migrate dev && npm run dev",
+    "startFrontWindows": "cd %cd%/FrontEnd && npm i -f && npm run dev",
+    "startFront": "cd ${PWD}/FrontEnd && npm i -f && npm run dev"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Celso-Lorensatto/NG.CASH/issues"
   },
-  "homepage": "https://github.com/Celso-Lorensatto/NG.CASH#readme"
+  "homepage": "https://github.com/Celso-Lorensatto/NG.CASH#readme",
+  "dependencies": {
+    "yarn": "^1.22.19"
+  }
 }

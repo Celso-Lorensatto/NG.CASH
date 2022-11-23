@@ -27,7 +27,7 @@ export default function PasswordStep({username, password, setPassword, setPasswo
 
     function validPassword(){
         setErroState('')
-        if(!passwordStepValue.match(/^(?=.*[0-9])(?=.*[A-Z])([A-Z0-9]+)$/)){
+        if(!passwordStepValue.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)){
             setErroState('Mínimo 8 caracteres, 1 Letra Maiúscula')
         }
     }

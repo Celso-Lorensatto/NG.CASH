@@ -31,7 +31,7 @@ type User = {
 const userValidation = (userObj :UserRequestData) =>{
     const userSchema = yup.object({
         username: yup.string().min(4).matches(/^(@)/, "Sem o @ no início").required("inclusão do usuário é obrigatória"),
-        password:yup.string().min(8, "A senha deve ter no mínimo 8 caracteres").matches(/^(?=.*[0-9])(?=.*[A-Z])([A-Z0-9]+)$/, "A Senha deve contar no mínimo uma letra maiúscula e um número").required('A Senha é obrigatório')
+        password:yup.string().min(8, "A senha deve ter no mínimo 8 caracteres").matches(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/, "A Senha deve contar no mínimo uma letra maiúscula e um número").required('A Senha é obrigatório')
     })
     return userSchema.validate(userObj).catch(err => err)
 }

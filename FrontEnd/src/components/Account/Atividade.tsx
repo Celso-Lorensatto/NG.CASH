@@ -191,7 +191,7 @@ export default function Atividade({ username ,onLoadTransitions}: AtividadeProps
                     (
                     <div  className="noTransference">
                         <img src="/img/ilustra/money.svg"/>
-                        <h1>Não á transferências por aqui ainda ; )</h1>
+                        <h1>Transferências não encontradas </h1>
                     </div>
                     )
                 }

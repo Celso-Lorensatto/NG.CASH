@@ -20,9 +20,11 @@ ___
 
 <h3>Windows</h3>
 
-<p>O link abaixo recupera um arquivo .msi que instalará o nodejs no padrão <i>next,next,finish</i>. Após finalizar a instalação, será possível prosseguir com a execução do projeto.</p>
+<p>O link abaixo recupera um arquivo .msi que instalará o nodejs no padrão <i>next,next,finish</i> . Após finalizar a instalação, será possível prosseguir com a execução do projeto.</p>
 
-https://nodejs.org/dist/v18.12.1/node-v18.12.1-x86.msi
+<h4>Versão 64 bits:</h4>
+
+https://nodejs.org/dist/v18.12.1/node-v18.12.1-x64.msi
 
 <h3>Linux</h3>
 
@@ -56,23 +58,58 @@ depois :
 https://nodejs.org/dist/v18.12.1/node-v18.12.1.pkg
 ___
 
-### Como executar o projeto ?
+# Como executar o projeto ?
 
-Para rodar o projeto como pretendo será necessário executar 2 comando no terminal do sistema para que seja possível testar o projeto.
+Com o projeto descompactado será necessário executar 2 comandos que podem variar de acordo com o sistema operacional.
+
+
+# Windows
 
 <h3>Primeiro Passo</h3>
-<p>No diretório raiz do projeto, abra o terminal do sistema e tenha certeza de que o diretório do terminal esteja direcionado para a raiz do projeto contendo as pastas 'Backend', e 'FrontEnd'</p>
+<p>Execute o Prompt de comando como administrador, e direcione o prompt para o diretório raiz do projeto em que se encontra as pastas /Backend e /FrontEnd.</p>
 
-<p>no caso do terminal do linux da seguinte forma:</p>
+<p>No exemplo abaixo o nome da pasta em que o projeto foi extrado se chama NG.CASH e se encontra do diretório c:/NG.CASH</p>
 
-<code>usuario@desktop:~/Qualquer_diretório/NG.Cash_Challange$ </code>
+![Windows](./readmeImgs/windows_prompt.png)
 
 <h3>Segundo Passo</h3>
 
 
-<p>Vamos rodar o Back e o Front!</p>
+1 - Ainda na raiz do projeto, execute o comando :
+<code>npm run startBackWindows</code>
 
-<p>Nota: Os comandos abaixo funcionam independente da plataforma, sendo os comando possíveis de serem executados por recursos fornecidos pelo próprio NodeJs.</p>
+Durante a execução do comando, ele perguntará se você permite a instalação do Prisma, você confirma precionando <kbd>y</kbd>   -> <kbd>enter</kbd>.
+
+Para saber se o comando funcionou, ficará assim :
+
+<h4 style='color:red;'>Após a execução do comando, não feche o terminal pois isso encerrará a execução do backEnd</h4>
+
+![backEnd Running](./readmeImgs/backEndRunning.png)
+
+
+2 - Com outro terminal aberto no diretório raiz do projeto, execute o seguinte comando:
+
+<code>npm run startFrontWindows</code>
+
+<h4 style='color:red;'>Após a execução do comando, não feche o terminal pois isso encerrará a execução do frontEnd</h4>
+
+Para saber se deu tudo certo, ficará assim:
+
+![frontEnd Running](./readmeImgs/frontEndRunning.png)
+
+
+<p>Se a execução for bem sucedida, existirá uma linha onde estará escrito <span style='color:green;'>ready</span> em verde,  ao final dela, estará o link onde está sendo executado o projeto para teste.</p>
+
+# Linux/MacOS
+
+<h3>Primeiro Passo</h3>
+<p>No diretório raiz do projeto, abra o terminal do sistema e tenha certeza de que o diretório do terminal esteja direcionado para a raiz do projeto contendo as pastas 'Backend', e 'FrontEnd'</p>
+
+<p>no caso da pasta do projeto ter o nome de NG.CASH, o terminal ficará da seguinte forma:</p>
+
+<code>usuario@desktop:~/Qualquer_diretório/NG.CASH$ </code>
+
+<h3>Segundo Passo</h3>
 
 
 1 - Ainda na raiz do projeto, execute o comando :
@@ -96,7 +133,7 @@ Para saber se deu tudo certo, ficará assim:
 ![frontEnd Running](./readmeImgs/frontEndRunning.png)
 
 
-<p>Se a execução for bem sucedida, Repare que na penultima linha onde esta escrito <span style='color:green;'>ready</span> em verde,  ao final dela, estará o link onde está sendo executado o projeto para teste ;)</p>
+<p>Se a execução for bem sucedida, Repare que em uma linha onde esta escrito <span style='color:green;'>ready</span> em verde,  ao final dela, estará o link onde está sendo executado o projeto para teste.</p>
 
 ___
 ### Troubleshoot (Possíveis problemas) 
